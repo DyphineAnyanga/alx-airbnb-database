@@ -1,17 +1,50 @@
 # Join Queries – Airbnb Database
 
-## INNER JOIN
-Query: Retrieves all bookings and the respective users who made them.
+##  INNER JOIN – Bookings and Users
+SELECT 
+    b.id AS booking_id,
+    b.start_date,
+    b.end_date,
+    u.id AS user_id,
+    u.name AS user_name,
+    u.email
+FROM 
+    bookings b
+INNER JOIN 
+    users u ON b.user_id = u.id;
 
-## LEFT JOIN
-Query: Retrieves all properties and their reviews. Includes properties with no reviews.
 
-## FULL OUTER JOIN
-Query: Retrieves all users and bookings, including:
-- Users with no bookings
-- Bookings not linked to a user
+##  LEFT JOIN – Properties and Reviews
+SELECT 
+    p.id AS property_id,
+    p.title,
+    p.location,
+    r.id AS review_id,
+    r.rating,
+    r.comment
+FROM 
+    properties p
+LEFT JOIN 
+    reviews r ON p.id = r.property_id;
 
-Note: Implemented using `UNION` since FULL OUTER JOIN is not supported in MySQL.
+##  FULL OUTER JOIN – Users and Bookings
+sql
+Copy
+Edit
+
+SELECT 
+    u.id AS user_id,
+    u.name AS user_name,
+    b.id AS booking_id,
+    b.start_date,
+    b.property_id
+FROM 
+    users u
+FULL OUTER JOIN 
+    bookings b ON u.id = b.user_id;
+
+
+
 # Subqueries – Airbnb Database
 
 ## Non-Correlated Subquery
