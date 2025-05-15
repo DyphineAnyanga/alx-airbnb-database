@@ -21,6 +21,8 @@ FROM
     properties p
 LEFT JOIN 
     reviews r ON p.id = r.property_id;
+ORDER BY 
+    p.id, r.id;
 
 SELECT 
     u.id AS user_id,
