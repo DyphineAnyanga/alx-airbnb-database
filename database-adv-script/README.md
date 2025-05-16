@@ -52,10 +52,45 @@ Find all properties with an average rating > 4.0.
 
 ## Correlated Subquery
 Find users who have made more than 3 bookings.
-# Aggregations and Window Functions – Airbnb Database
 
-## Total Bookings by User
-Uses `COUNT` and `GROUP BY` to find how many bookings each user has made.
 
-## Ranking Properties
-Uses `RANK()` window function to rank properties based on total bookings.
+#  Aggregations and Window Functions
+
+This SQL script demonstrates the use of **aggregation functions** and **window functions** to analyze user behavior and property popularity in the Airbnb database.
+
+##  Objectives
+
+- Count the total number of bookings made by each user.
+- Rank properties based on how many bookings they have received using window functions.
+
+##  What’s Included
+
+### 1. User Booking Count (Aggregation)
+- Uses `COUNT()` and `GROUP BY` to calculate the number of bookings made by each user.
+- Helps identify power users and engagement trends.
+
+### 2. Property Booking Rank (Window Functions)
+- `RANK()`: Ranks properties based on total bookings. Ties receive the same rank.
+- `ROW_NUMBER()`: Assigns a unique number to each property based on booking count, without considering ties.
+
+##  SQL Features Used
+
+- `COUNT()`
+- `GROUP BY`
+- `ORDER BY`
+- `JOIN`
+- `RANK() OVER (ORDER BY ...)`
+- `ROW_NUMBER() OVER (ORDER BY ...)`
+
+##  File
+
+- `aggregations_and_window_functions.sql`
+
+##  Example Use Cases
+
+- Generate user engagement reports.
+- Create leaderboards of the most booked properties.
+- Power dashboards for operational insights.
+
+---
+
