@@ -33,18 +33,6 @@ CREATE INDEX idx_properties_location ON properties(location);
 CREATE INDEX idx_users_email ON users(email);
 
 
-EXPLAIN ANALYZE
-SELECT * FROM bookings WHERE user_id = 5;
 
-EXPLAIN ANALYZE
-SELECT b.id, p.title 
-FROM bookings b
-JOIN properties p ON b.property_id = p.id;
-
-
-| Query                        | Before Index | After Index | Improvement  |
-| ---------------------------- | ------------ | ----------- | ------------ |
-| `bookings WHERE user_id = 5` | 120 ms       | 18 ms       | \~85% faster |
-| `JOIN bookings + properties` | 260 ms       | 60 ms       | \~77% faster |
 
 
